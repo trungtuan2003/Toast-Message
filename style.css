@@ -14,6 +14,13 @@ body > div {
     margin: auto;
 }
 
+#toast {
+    position: fixed;
+    top: 32px;
+    right: 32px;
+
+}
+
 .toast {
     display: flex;
     align-items: center;
@@ -23,7 +30,8 @@ body > div {
     height: 80px;
     box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
     padding-right: 20px;
-    
+    margin-bottom: 20px;
+
 }
 
 .toast--success .toast__icon  {
@@ -73,8 +81,43 @@ body > div {
 }  
 
 .toast__close {
-    
     padding-left: 40px;
     color: #888;
     cursor: pointer;
 }
+
+
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(calc(100% + 32px));
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.btn--size--l {
+    background-color: green;
+    
+}
+
+.btn--size--r {
+    margin-top: 10px;
+    background-color: red;
+}
+
