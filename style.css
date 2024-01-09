@@ -31,6 +31,7 @@ body > div {
     box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
     padding-right: 20px;
     margin-bottom: 20px;
+    transition: all linear .3s;
 
 }
 
