@@ -6,13 +6,22 @@ function toast ({
 }) {
     const main = document.getElementById("toast");
     
+   
+
+
     if(main) {
         const toast = document.createElement("div");
 
+        const timeDisappear = 1000;
+        const autoRemoveId = setTimeout(function() {
+            main.removeChild(toast);
+        }, duration + timeDisappear)
         
         toast.onclick = (e) => {
             if(e.target.closest('.toast__close')) {
                 main.removeChild(toast);
+                clearTimeout(autoRemoveId);
+
             }
         }
 
@@ -46,10 +55,7 @@ function toast ({
         `;
         main.appendChild(toast);
 
-        const timeDisappear = 1000;
-        setTimeout(function() {
-            main.removeChild(toast);
-        }, duration + timeDisappear)
+        
     }
 }
 
