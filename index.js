@@ -7,6 +7,15 @@ function toast ({
     const main = document.getElementById("toast");
     
     if(main) {
+        const toast = document.createElement("div");
+
+        
+        toast.onclick = (e) => {
+            if(e.target.closest('.toast__close')) {
+                main.removeChild(toast);
+            }
+        }
+
         const icons = {
             success: 'fa-solid fa-circle-check',
             info : 'fa-solid fa-circle-info',
@@ -16,7 +25,7 @@ function toast ({
         const icon = icons[type];
         const delay = (duration / 1000).toFixed(2);
 
-        const toast = document.createElement("div");
+       
         toast.classList.add("toast", `toast--${type}`);
         toast.style.animation = `slideIn ease .3s, fadeOut linear 1s ${delay}s forwards`;
         toast.innerHTML = `
@@ -31,17 +40,19 @@ function toast ({
                         ${message}
                     </div>
                 </div> 
-                <div class="toast__close",  onclick="removeToast();">
+                <div class="toast__close";">
                     <i class="fa-solid fa-xmark"></i>
                 </div>
         `;
         main.appendChild(toast);
+
+        const timeDisappear = 1000;
+        setTimeout(function() {
+            main.removeChild(toast);
+        }, duration + timeDisappear)
     }
 }
 
-function removeToast() {
-    toast.remove();
-}
 function showSuccessToast() {
     toast({
         title: 'Success',
